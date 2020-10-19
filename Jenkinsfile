@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('check scm') {
       steps {
-        sh 'sh date'
+        sh 'date'
       }
     }
 
