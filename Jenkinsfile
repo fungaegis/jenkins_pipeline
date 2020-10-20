@@ -9,18 +9,18 @@ pipeline{
         // sonarqubescanner 'SonarQubeScanner'
     }
     post { // post部分应放在Pipeline末端
-    always {
-        echo 'This will always run'
-        }
-    success {
-        echo 'This will run only if successful'
-        }
-    failure {
-        echo 'This will run only if failed'
-        }
-    unstable {
-        echo 'This will run only if the run was marked as unstable'
-        }
+        always {
+            echo 'This will always run'
+            }
+        success {
+            echo 'This will run only if successful'
+            }
+        failure {
+            echo 'This will run only if failed'
+            }
+        unstable {
+            echo 'This will run only if the run was marked as unstable'
+            }
     }
     stages{
         stage('单元测试'){
@@ -90,6 +90,5 @@ pipeline{
                 }
             }
         }
-    }
     }
 }
