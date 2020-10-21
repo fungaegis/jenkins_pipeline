@@ -5,9 +5,9 @@ pipeline{
         choice choices: ['地址1', '地址2', '地址3'], description: '', name: 'git地址'
         // sonarqubescanner = tool 'SonarQubeScanner'
     }
-    tools {
-        // sonarqubescanner 'SonarQubeScanner'
-    }
+    // tools {
+    //     // sonarqubescanner 'SonarQubeScanner'
+    // }
     post { // post部分应放在Pipeline末端
         always {
             echo 'This will always run'
