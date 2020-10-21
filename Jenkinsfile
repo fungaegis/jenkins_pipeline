@@ -24,23 +24,25 @@ pipeline{
     }
     stages{
         stage('单元测试'){
-            echo 'unit testing' // 单元测试的结果提供给sonar
+            steps{
+                echo 'unit testing' // 单元测试的结果提供给sonar
+            }
         }
         stage('SonarQube静态检查') {
-            echo "静态检查完成"
-            // steps{
+            steps{
+                echo "静态检查完成"
             //     withSonarQubeEnv('sonarqube') { //进入sonarqube环境
             //       sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins -Dsonar.sources=${WORKSPACE}/code/  -Dsonar.host.url=http://172.16.16.84:9000  -Dsonar.login=${token}"
             //     }
-            // }
+            }
         }
-        stage("质量阀") {        
-            echo "质量阀通过"    
-            // steps{                  
+        stage("质量阀") {           
+            steps{            
+                echo "质量阀通过"       
             //     timeout(time: 1, unit: 'HOURS') {// 超时时间1小时                 
             //         waitForQualityGate abortPipeline: true  // 等待 SonarQube 返回的分析结果。当 abortPipeline=true，表示质量不合格，将 pipeline 状态设置为 UNSTABLE。                
             //     }            
-            // }    
+            }    
         }
         stage("部署环境"){
             stages{
@@ -87,7 +89,7 @@ pipeline{
                     steps {
                         echo "执行UI自动化"
                     }
-                }
+                }   
             }
         }
     }
