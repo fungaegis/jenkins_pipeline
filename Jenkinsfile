@@ -47,16 +47,25 @@ pipeline{
         stage("部署环境"){
             stages{
                 stage("开发环境"){
+                    when {
+                        branch 'dev'
+                    }
                     steps {
                         echo "部署开发环境"
                     }
                 }
                 stage("测试环境"){
+                    when {
+                        branch 'test'
+                    }
                     steps {
                         echo "部署开发环境"
                     }
                 }
                 stage("生产环境"){
+                    when {
+                        branch 'pro'
+                    }
                     steps {
                         echo "部署开发环境, 请运维人工审批"
                     }
@@ -91,6 +100,12 @@ pipeline{
                     }
                 }   
             }
+        }
+        stage("人工验收通知"){
+            steps{
+                echo "生产环境已部署成功,请检查"//也可以将此处合并到post中
+            }
+
         }
     }
 }
