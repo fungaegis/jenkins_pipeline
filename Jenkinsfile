@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy 
 pipeline{
-    agent none
+    agent any
     parameters {
         choice choices: ['地址1', '地址2', '地址3'], description: '', name: 'git地址'
         // sonarqubescanner = tool 'SonarQubeScanner'
