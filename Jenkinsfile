@@ -44,8 +44,15 @@ pipeline{
             //     }            
             }    
         }
-        stage("部署环境"){
+        stage("部署环境"){ // 部署环境 1. ssh publish 2. docker remote
             stages{
+                stage("构建镜像"){
+                    steps{
+                        echo '构建镜像'
+                        echo 'push镜像'
+                    }
+
+                }
                 stage("开发环境"){
                     when {
                         branch 'dev'
@@ -68,6 +75,7 @@ pipeline{
                     }
                     steps {
                         echo "部署开发环境, 请运维人工审批"
+                        input '部署开发环境, 请运维人工审批'
                     }
                 }
             }
@@ -104,6 +112,8 @@ pipeline{
         stage("人工验收通知"){
             steps{
                 echo "生产环境已部署成功,请检查"//也可以将此处合并到post中
+                sh "ls"
+                sh "cat this_is_folder"
             }
 
         }
