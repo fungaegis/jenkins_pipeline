@@ -106,6 +106,7 @@ pipeline{
                     steps {
                         echo "执行UI自动化"
                         sh "ls"
+                        sh "ls"
                         sh "cat this_is_folder"
                     }
                 }   
